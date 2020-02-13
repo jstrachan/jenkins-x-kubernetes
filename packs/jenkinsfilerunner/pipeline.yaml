@@ -1,0 +1,18 @@
+extends:
+  import: classic
+  file: pipeline.yaml
+agent:
+  label: jenkinsfilerunner
+  container: jenkins4eval/jenkinsfile-runner
+pipelines:
+  release:
+    build:
+      steps:
+        - name: run
+          sh: /app/bin/jenkinsfile-runner-launcher -w /app/jenkins -p /usr/share/jenkins/ref/plugins -f /workspace/source --runWorkspace /workspace/build
+  pullRequest:
+    build:
+      steps:
+        - name: run
+          sh: /app/bin/jenkinsfile-runner-launcher -w /app/jenkins -p /usr/share/jenkins/ref/plugins -f /workspace/source --runWorkspace /workspace/build
+
