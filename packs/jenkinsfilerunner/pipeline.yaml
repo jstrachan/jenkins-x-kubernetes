@@ -14,6 +14,7 @@ pipelines:
           sh: /app/bin/jenkinsfile-runner-launcher -w /app/jenkins -p /usr/share/jenkins/ref/plugins -f /workspace/source --runWorkspace /workspace/build
   overrides:
     - pipeline: release
-      step: setup-jx-git-credentials
-      image: gcr.io/jenkinsxio/builder-go
-      sh: jx step git credentials
+      name: setup-jx-git-credentials
+      step:
+        image: gcr.io/jenkinsxio/builder-go
+        sh: jx step git credentials
