@@ -1,0 +1,16 @@
+agent:
+  label: jenkins-go
+  container: go
+pipelines:
+  pullRequest:
+    build:
+      steps:
+      - sh: tp
+        name: build
+        image: gcr.io/jx-development/trigger-pipeline:v1
+  release:
+    build:
+      steps:
+      - sh: tp
+        name: build
+        image: gcr.io/jx-development/trigger-pipeline:v1
