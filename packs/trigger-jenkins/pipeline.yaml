@@ -7,10 +7,10 @@ pipelines:
       steps:
       - sh: tp
         name: build
-        image: gcr.io/jstrachan-multicluster/trigger-pipeline:v1
+        image: gcr.io/jstrachan-multicluster/trigger-pipeline:v2
   release:
     build:
       steps:
       - sh: tp
         name: build
-        image: gcr.io/jstrachan-multicluster/trigger-pipeline:v1
+        image: gcr.io/jstrachan-multicluster/trigger-pipeline:v2
