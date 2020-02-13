@@ -15,6 +15,7 @@ pipelines:
   overrides:
     - pipeline: release
       name: setup-jx-git-credentials
+      type: replace
       step:
         image: gcr.io/jenkinsxio/builder-go
         sh: jx step git credentials
