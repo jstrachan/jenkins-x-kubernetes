@@ -15,7 +15,7 @@ pipelines:
           containerOptions:
             env:
             - name: HELM_PLUGINS
-              value: "$HOME/.helm/plugins"
+              value: "/root/.cache/helm/plugins"
         steps:
         - args:
           - step
@@ -119,7 +119,7 @@ pipelines:
             - name: JX_SECRETS_YAML
               value: /tmp/.jx/localSecrets/currentCluster/secrets.yaml
             - name: HELM_PLUGINS
-              value: "$HOME/.helm/plugins"
+              value: "/root/.cache/helm/plugins"
             volumeMounts:
             - mountPath: /tmp/.jx/localSecrets/currentCluster
               name: local-secrets
