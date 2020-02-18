@@ -11,11 +11,6 @@ pipelines:
         image: gcr.io/jenkinsxio/builder-go:0.0.0-SNAPSHOT-PR-6664-125
       stages:
       - name: release
-        options:
-          containerOptions:
-            env:
-            - name: PATH
-              value: "/usr/bin/helm3-bin:$PATH"
         steps:
         - args:
           - step
@@ -116,8 +111,6 @@ pipelines:
         options:
           containerOptions:
             env:
-            - name: PATH
-              value: "/usr/bin/helm3-bin:$PATH"
             - name: JX_SECRETS_YAML
               value: /tmp/.jx/localSecrets/currentCluster/secrets.yaml
             volumeMounts:
