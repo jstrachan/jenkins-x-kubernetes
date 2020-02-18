@@ -3,14 +3,19 @@ extends:
   file: pipeline.yaml
 agent:
   label: jenkins-go
-  container: gcr.io/jenkinsxio/builder-go:0.0.0-SNAPSHOT-PR-6664-125
+  container: jenkinsxio/jenkins-x-installer:0.0.27
 pipelines:
   release:
     pipeline:
       agent:
-        image: gcr.io/jenkinsxio/builder-go:0.0.0-SNAPSHOT-PR-6664-125
+        image: jenkinsxio/jenkins-x-installer:0.0.27
       stages:
       - name: release
+        options:
+          containerOptions:
+            env:
+            - name: HELM_PLUGINS
+              value: "$HOME/.helm/plugins"
         steps:
         - args:
           - step
@@ -105,7 +110,7 @@ pipelines:
   pullRequest:
     pipeline:
       agent:
-        image: gcr.io/jenkinsxio/builder-go:0.0.0-SNAPSHOT-PR-6664-125
+        image: jenkinsxio/jenkins-x-installer:0.0.27
       stages:
       - name: pr-checks
         options:
@@ -113,6 +118,8 @@ pipelines:
             env:
             - name: JX_SECRETS_YAML
               value: /tmp/.jx/localSecrets/currentCluster/secrets.yaml
+            - name: HELM_PLUGINS
+              value: "$HOME/.helm/plugins"
             volumeMounts:
             - mountPath: /tmp/.jx/localSecrets/currentCluster
               name: local-secrets
