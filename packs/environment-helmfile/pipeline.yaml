@@ -74,6 +74,11 @@ pipelines:
           dir: /workspace/source/apps
           name: helmfile-apps
         - args:
+          - sync
+          command: helmfile
+          dir: /workspace/source/helmfile
+          name: helmfile-helmfile
+        - args:
           - step
           - verify
           - env
