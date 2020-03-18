@@ -40,6 +40,7 @@ pipelines:
         steps:
         - sh: jx step changelog --version v\$(cat ../../VERSION)
           name: changelog
+          image: gcr.io/jenkinsxio-labs/jxl
         - comment: release the helm chart
           sh: jx step helm release
           name: helm-release

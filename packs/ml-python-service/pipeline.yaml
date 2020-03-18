@@ -52,6 +52,8 @@ pipelines:
       - dir: ./charts/REPLACE_ME_APP_NAME
         steps:
         - sh: jx step changelog --version v\$(cat ../../VERSION)
+          name: changelog
+          image: gcr.io/jenkinsxio-labs/jxl
         - comment: release the helm chart
           sh: jx step helm release
         - comment: promote through all 'Auto' promotion Environments
