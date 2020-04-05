@@ -14,8 +14,7 @@ pipelines:
         options:
           volumes:
           - name: jx-boot-secrets
-            secret:
-              secretName: jx-boot-secrets
+            emptyDir: {}
           containerOptions:
             env:
             - name: HELM_PLUGINS
@@ -35,6 +34,14 @@ pipelines:
           command: jx
           dir: /workspace/source
           name: validate-git
+        - args:
+          - boot
+          - secrets
+          - export
+          - --dir=.
+          command: jxl
+          dir: /workspace/source
+          name: verify-secrets
         - args:
           - step
           - verify
