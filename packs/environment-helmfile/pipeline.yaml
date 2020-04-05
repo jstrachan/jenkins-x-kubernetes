@@ -28,13 +28,6 @@ pipelines:
               name: jx-boot-secrets
         steps:
         - args:
-          - step
-          - git
-          - validate
-          command: jx
-          dir: /workspace/source
-          name: validate-git
-        - args:
           - boot
           - secrets
           - export
@@ -42,6 +35,13 @@ pipelines:
           command: jxl
           dir: /workspace/source
           name: verify-secrets
+        - args:
+          - step
+          - git
+          - validate
+          command: jx
+          dir: /workspace/source
+          name: validate-git
         - args:
           - step
           - verify
